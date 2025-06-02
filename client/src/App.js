@@ -5,28 +5,28 @@ import UserList from './components/Users/UserList';
 function App() {
 
   const [userList, setUserList] = useState([])
+
   const createUserHandler = (name, age) => {
+    console.log(name, age)
     setUserList((prevUserList) => {
-      return {
-        ...prevUserList
+      return [
+        ...prevUserList,
         {
           name: name,
-          age: age
+          age: age,
           id: Date.now()
         }
-      }
-
+      ]
     })
-
   }
 
-
   return (
-  <>
-  <CreateUser onCreateUser={createUserHandler} />
-  <UserList users={userList} />
-  </>     
+    <>
+      <CreateUser onCreateUser={createUserHandler} />
+      <UserList users={userList} />
+    </>
   );
+
 }
 
 export default App;
